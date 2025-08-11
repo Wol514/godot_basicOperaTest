@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqr8x446swccg"]
+[gd_scene load_steps=15 format=3 uid="uid://dqr8x446swccg"]
 
 [ext_resource type="Script" uid="uid://c46h30xs1k1f8" path="res://Scripts/player.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://qtjmvplracgy" path="res://AssetBundle/Sprites/Foxy.png" id="1_rpqav"]
@@ -86,11 +86,18 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kyqiw"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animator")]
 script = ExtResource("1_kyqiw")
+move_speed = 50.0
+animator = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nn08x")
 animation = &"Run"
 autoplay = "Idle"
 frame_progress = 0.675024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kyqiw")
