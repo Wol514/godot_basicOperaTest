@@ -9,7 +9,7 @@ func _process(delta: float) -> void:
 	if not is_dead:
 		position += Vector2(slime_speed_x,slime_speed_y)*delta
 	if position.x < -267:
-		queue_free()
+		queue_free() 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and not is_dead:
